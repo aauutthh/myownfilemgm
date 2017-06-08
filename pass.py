@@ -54,6 +54,8 @@ def index():
     key = request.cookies.get('key','')
     hk = gethash(key) 
     if hk == hashkey :
+        if not os.path.exists(secertfile) :
+            return redirect(url_for("update"))
         data = parse_file(secertfile)
         resp = make_response( render_template("index.html",data=data) ) 
     else :
@@ -118,7 +120,7 @@ def update():
     oldpath = os.getcwd()
     projdir = passcfg.projname
     os.chdir(projdir)
-    cmd = "git pull"
+    cmd = "git pull;git checkout -- ."
     status,out = getstatusoutput(cmd)
     os.chdir(oldpath)
     return redirect(url_for("index"))

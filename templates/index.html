@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="更新">
-<form id="form1" method="get" action="update">
+<form id="form1" method="get" action="./update">
 <fieldset>
         <button id="btn-ok" type="submit" class="btn">
             更新文件
@@ -16,7 +16,7 @@
 </div>
 <ol>
 {% for item in data %}
-   <li> <a href="/getdata?from={{ item.pos}}&to={{ item.posend }}" > {{ item.title }} </a> </li>
+   <li> <a href="./getdata?from={{ item.pos}}&to={{ item.posend }}" > {{ item.title }} </a> </li>
 {% endfor %}
 </ol>
 </body>
